@@ -26,6 +26,6 @@ protected:
   double **matriz;
   
   /* setters */
-  double setLinha (unsigned int linha);
-  double setColuna (unsigned int coluna);
+  void setLinha (unsigned int linha);
+  void setColuna (unsigned int coluna);
 };
