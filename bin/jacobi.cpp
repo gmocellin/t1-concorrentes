@@ -19,6 +19,7 @@ jacobi::jacobi(matriz *matrizA, matriz *matrizB) {
   setMatrizA(matrizA);
   setMatrizB(matrizB);
   setSize(matrizA->getLinha());
+  cout << "construtor" << endl;
 }
 
 jacobi::~jacobi() { 
@@ -40,6 +41,7 @@ unsigned int jacobi::getSize () {
 
 void jacobi::jacobiRichardson (unsigned int J_ROW_TEST, double J_ERROR, unsigned int J_ITE_MAX) {
   unsigned int i;
+  cout << this << endl;
   double **matrizB_Matriz = this->matrizB->getMatriz();
   double **matrizA_Matriz = this->matrizA->getMatriz();
   double Xk2[this->size];

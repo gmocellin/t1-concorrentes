@@ -10,8 +10,11 @@ main.o:
 jacobi.o:	
 	@g++ -c -g -O3 jacobi.cpp
 
-run:
-	@./t1-concorrentes
+run normal:
+	@./t1-concorrentes normal
+
+run thread:
+	@./t1-concorrentes thread
 
 zip:
 	@zip -r t1-concorrentes.zip Makefile *.cpp *.h
