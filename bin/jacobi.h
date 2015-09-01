@@ -3,12 +3,12 @@
 class jacobi {
 public:
   /* construtores */
-  jacobi(matriz &matrizA, matriz &matrizB);
-  /* destrutores */
+  jacobi(matriz *matrizA, matriz *matrizB);
+  /* destrutore */
   ~jacobi();
   
-  matriz getMatrizA ();
-  matriz getMatrizB ();
+  matriz* getMatrizA ();
+  matriz* getMatrizB ();
   unsigned int getSize ();
   
   // 
@@ -19,21 +19,21 @@ protected:
   
   void processamento (unsigned int index, double *proximo, double *anterior);
   
-  void setMatrizA (matriz &matrizA);
-  void setMatrizB (matriz &matrizB);
+  void setMatrizA (matriz *matrizA);
+  void setMatrizB (matriz *matrizB);
   void setSize (unsigned int size);
   
   // matriz processada
-  matriz &matrizA;
+  matriz *matrizA;
   // vetor
-  matriz &matrizB;
+  matriz *matrizB;
   // tamanho das duas matrizes
   unsigned int size;
 };
 
 class jacobiThread : public jacobi {
 public:
-  jacobiThread(matriz &matrizA, matriz &matrizB);
+  jacobiThread(matriz *matrizA, matriz *matrizB);
   
 protected:
   void iterar (double *proximo, double *anterior);

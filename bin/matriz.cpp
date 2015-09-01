@@ -58,6 +58,7 @@ void matriz::read () {
 void matriz::print() {
   for(unsigned int i=0; i < this->getLinha(); i++){
     for (unsigned int j = 0; j < this->getColuna(); j++)
-      cout << this->Matriz[i][j] << endl;
+      cout << this->Matriz[i][j];
+    cout << endl;
   }
 }

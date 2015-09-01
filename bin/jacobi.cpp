@@ -11,25 +11,26 @@ double norma (const double *Xk, const double *Xk2, unsigned int size) {
       max_norma = aux;
   }
   
+  cout << max_norma << endl;
   return max_norma;
 }
 
-jacobi::jacobi(matriz &matrizA, matriz &matrizB) : matrizA(matrizA), matrizB(matrizB) {
+jacobi::jacobi(matriz *matrizA, matriz *matrizB) {
   setMatrizA(matrizA);
   setMatrizB(matrizB);
-  setSize(matrizA.getLinha());
+  setSize(matrizA->getLinha());
 }
 
-jacobi::~jacobi() {
-  delete &matrizA;
-  delete &matrizB;
+jacobi::~jacobi() { 
+  this->matrizA = NULL;
+  this->matrizB = NULL;
 }
 
-matriz jacobi::getMatrizA () {
+matriz* jacobi::getMatrizA () {
   return this->matrizA;
 }
 
-matriz jacobi::getMatrizB () {
+matriz* jacobi::getMatrizB () {
   return this->matrizB;
 }
 
@@ -39,8 +40,8 @@ unsigned int jacobi::getSize () {
 
 void jacobi::jacobiRichardson (unsigned int J_ROW_TEST, double J_ERROR, unsigned int J_ITE_MAX) {
   unsigned int i;
-  double **matrizB_Matriz = this->matrizB.getMatriz();
-  double **matrizA_Matriz = this->matrizA.getMatriz();
+  double **matrizB_Matriz = this->matrizB->getMatriz();
+  double **matrizA_Matriz = this->matrizA->getMatriz();
   double Xk2[this->size];
   for (i = 0; i < this->size; i++)
     Xk2[i] = matrizB_Matriz[0][i];
@@ -76,8 +77,8 @@ void jacobi::iterar (double *Xk2, double *Xk) {
   
 void jacobi::processamento (unsigned int index, double *Xk2, double *Xk) {
   int aux = 0;
-  double **matrizB_Matriz = this->matrizB.getMatriz();
-  double **matrizA_Matriz = this->matrizA.getMatriz();
+  double **matrizB_Matriz = this->matrizB->getMatriz();
+  double **matrizA_Matriz = this->matrizA->getMatriz();
   
   for (unsigned int i = 0; i < this->size; i++) {
     if (i != index)
@@ -86,11 +87,11 @@ void jacobi::processamento (unsigned int index, double *Xk2, double *Xk) {
   Xk2[index] = (matrizB_Matriz[0][index] - aux) / matrizA_Matriz[index][index];
 }
   
-void jacobi::setMatrizA (matriz &matrizA) {
+void jacobi::setMatrizA (matriz *matrizA) {
   this->matrizA = matrizA;
 }
 
-void jacobi::setMatrizB (matriz &matrizB) {
+void jacobi::setMatrizB (matriz *matrizB) {
   this->matrizB = matrizB;
 }
 
@@ -98,7 +99,7 @@ void jacobi::setSize (unsigned int size) {
   this->size = size;
 }
 
-jacobiThread::jacobiThread(matriz &matrizA, matriz &matrizB) : jacobi(matrizA,matrizB) { }
+jacobiThread::jacobiThread(matriz *matrizA, matriz *matrizB) : jacobi(matrizA,matrizB) { }
 
 void jacobiThread::iterar (double *Xk2, double *Xk) { }
   
