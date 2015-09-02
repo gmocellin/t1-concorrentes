@@ -138,8 +138,15 @@ void jacobi::setSize (unsigned int size) {
   this->size = size;
 }
 
-jacobiThread::jacobiThread(matriz *matrizA, matriz *matrizB) : jacobi(matrizA,matrizB) { }
+jacobiThread::jacobiThread(matriz *matrizA, matriz *matrizB) : jacobi(matrizA,matrizB) { 
+  this->n_threads = this->size;
+  this->Threads = new pthread_t[this->n_threads];
+}
 
-void jacobiThread::iterar (double *Xk2, double *Xk) { }
+void jacobiThread::iterar (double *Xk2, double *Xk) {
   
-void jacobiThread::divideProcessamento (unsigned int ini, unsigned int fim, double *Xk2, double *Xk) { }
+}
+  
+void jacobiThread::divideProcessamento (unsigned int ini, unsigned int fim, double *Xk2, double *Xk) {
+  
+}
