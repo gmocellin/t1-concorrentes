@@ -10,10 +10,10 @@ main.o:
 jacobi.o:	
 	@g++ -c -g -O3 jacobi.cpp
 
-run normal:
+normal:
 	@./t1-concorrentes normal
 
-run thread:
+thread:
 	@./t1-concorrentes thread
 
 zip:

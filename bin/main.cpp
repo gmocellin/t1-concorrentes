@@ -23,12 +23,9 @@ int main (int argc, char *argv[]) {
   
   if (argc > 1 && strcmp (argv[1], "thread") == 0)
     processador = new jacobiThread (matrizA,matrizB);
-  else if (argc > 1 && strcmp (argv[1], "normal") == 0) {
-    cout << "oi" << endl;
+  else if (argc > 1 && strcmp (argv[1], "normal") == 0)
     processador = new jacobi (matrizA,matrizB);
-  }
-  
-  cout << "main " << &matrizB << endl;
+
   processador->jacobiRichardson(J_ROW_TEST,J_ERROR,J_ITE_MAX);
   
   if(matrizA != NULL) delete matrizA;

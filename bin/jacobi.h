@@ -40,4 +40,7 @@ protected:
   
   void divideProcessamento (unsigned int ini, unsigned int fim, double *proximo, double *anterior);
   
+  int n_threads;
+  
+  pthread_t *Threads;
 };
