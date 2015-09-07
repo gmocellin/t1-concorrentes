@@ -16,6 +16,9 @@ normal:
 thread:
 	@./t1-concorrentes thread
 
+tests:
+	@./tests.sh
+
 zip:
 	@zip -r t1-concorrentes.zip Makefile *.cpp *.h
 
